@@ -20,7 +20,6 @@ namespace PetMe.Core.Entities
         public string LastSeenCity { get; set; }
         public string LastSeenDistrict { get; set; }
 
-        //create at 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         // Optional: Combine both into a single LastSeenLocation for display purposes

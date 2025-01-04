@@ -15,7 +15,6 @@ namespace PetMe.Core.Entities
         public string? Message { get; set; }
         public AdoptionStatus Status { get; set; }
         public DateTime RequestDate { get; set; }
-
         public Pet Pet { get; set; }
         public User User { get; set; }
     }

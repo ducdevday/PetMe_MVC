@@ -14,7 +14,6 @@ namespace PetMe.Core.Entities
         public int UserId { get; set; }
         public DateTime AdoptionDate { get; set; }
         public AdoptionStatus Status { get; set; }
-
         public Pet Pet { get; set; }
         public User User { get; set; }
     }
