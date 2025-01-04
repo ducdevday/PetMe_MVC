@@ -1648,20 +1648,6 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "PetMe.Core/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "9.0.0",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.2"
-        },
-        "compile": {
-          "bin/placeholder/PetMe.Core.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/PetMe.Core.dll": {}
-        }
-      },
       "PetMe.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -1669,7 +1655,6 @@
           "Microsoft.EntityFrameworkCore": "9.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.2",
           "Npgsql.EntityFrameworkCore.PostgreSQL.Design": "1.1.0",
-          "PetMe.Core": "1.0.0",
           "PetMe.Setting": "1.0.0"
         },
         "compile": {
@@ -1677,6 +1662,21 @@
         },
         "runtime": {
           "bin/placeholder/PetMe.Data.dll": {}
+        }
+      },
+      "PetMe.DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "9.0.0",
+          "PetMe.Data": "1.0.0",
+          "PetMe.Setting": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PetMe.DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PetMe.DataAccess.dll": {}
         }
       },
       "PetMe.Setting/1.0.0": {
@@ -5436,15 +5436,15 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "PetMe.Core/1.0.0": {
-      "type": "project",
-      "path": "../PetMe.Core/PetMe.Core.csproj",
-      "msbuildProject": "../PetMe.Core/PetMe.Core.csproj"
-    },
     "PetMe.Data/1.0.0": {
       "type": "project",
-      "path": "../PetMe.Data/PetMe.Data.csproj",
-      "msbuildProject": "../PetMe.Data/PetMe.Data.csproj"
+      "path": "../PetMe.Core/PetMe.Data.csproj",
+      "msbuildProject": "../PetMe.Core/PetMe.Data.csproj"
+    },
+    "PetMe.DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../PetMe.Data/PetMe.DataAccess.csproj",
+      "msbuildProject": "../PetMe.Data/PetMe.DataAccess.csproj"
     },
     "PetMe.Setting/1.0.0": {
       "type": "project",
@@ -5455,8 +5455,8 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "DotNetEnv >= 3.1.1",
-      "PetMe.Core >= 1.0.0",
       "PetMe.Data >= 1.0.0",
+      "PetMe.DataAccess >= 1.0.0",
       "PetMe.Setting >= 1.0.0"
     ]
   },
@@ -5488,11 +5488,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Core.csproj": {
-              "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Core.csproj"
+            "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Data.csproj": {
+              "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Data.csproj"
             },
-            "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.Data.csproj": {
-              "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.Data.csproj"
+            "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.DataAccess.csproj": {
+              "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.DataAccess.csproj"
             },
             "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Setting\\PetMe.Setting.csproj": {
               "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Setting\\PetMe.Setting.csproj"

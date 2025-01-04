@@ -4,12 +4,12 @@
     "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Web\\PetMe.Web.csproj": {}
   },
   "projects": {
-    "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Core.csproj": {
+    "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Core.csproj",
-        "projectName": "PetMe.Core",
-        "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Core.csproj",
+        "projectUniqueName": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Data.csproj",
+        "projectName": "PetMe.Data",
+        "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Data.csproj",
         "packagesPath": "C:\\Users\\Ming Duc\\.nuget\\packages\\",
         "outputPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\obj\\",
         "projectStyle": "PackageReference",
@@ -28,93 +28,7 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        }
-      },
-      "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[9.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[9.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[9.0.0, )"
-            },
-            "Npgsql.EntityFrameworkCore.PostgreSQL": {
-              "target": "Package",
-              "version": "[9.0.2, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.Data.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.Data.csproj",
-        "projectName": "PetMe.Data",
-        "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.Data.csproj",
-        "packagesPath": "C:\\Users\\Ming Duc\\.nuget\\packages\\",
-        "outputPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Ming Duc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Core.csproj": {
-                "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Core.csproj"
-              },
               "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Setting\\PetMe.Setting.csproj": {
                 "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Setting\\PetMe.Setting.csproj"
               }
@@ -153,6 +67,80 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL.Design": {
               "target": "Package",
               "version": "[1.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.DataAccess.csproj",
+        "projectName": "PetMe.DataAccess",
+        "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\Ming Duc\\.nuget\\packages\\",
+        "outputPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Ming Duc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Data.csproj": {
+                "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Data.csproj"
+              },
+              "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Setting\\PetMe.Setting.csproj": {
+                "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Setting\\PetMe.Setting.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [
@@ -261,11 +249,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Core.csproj": {
-                "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Core.csproj"
+              "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Data.csproj": {
+                "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Core\\PetMe.Data.csproj"
               },
-              "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.Data.csproj": {
-                "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.Data.csproj"
+              "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.DataAccess.csproj": {
+                "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Data\\PetMe.DataAccess.csproj"
               },
               "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Setting\\PetMe.Setting.csproj": {
                 "projectPath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Setting\\PetMe.Setting.csproj"
