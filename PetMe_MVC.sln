@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetMe.Web", "PetMe.Web\PetMe.Web.csproj", "{C3460D66-7553-4071-951B-D1A287B99B48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetMe.Web", "PetMe.Web\PetMe.Web.csproj", "{C3460D66-7553-4071-951B-D1A287B99B48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetMe.Core", "PetMe.Core\PetMe.Core.csproj", "{280D6F79-573B-4678-AA90-EE096B1BD606}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C3460D66-7553-4071-951B-D1A287B99B48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3460D66-7553-4071-951B-D1A287B99B48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3460D66-7553-4071-951B-D1A287B99B48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{280D6F79-573B-4678-AA90-EE096B1BD606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{280D6F79-573B-4678-AA90-EE096B1BD606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{280D6F79-573B-4678-AA90-EE096B1BD606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{280D6F79-573B-4678-AA90-EE096B1BD606}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
