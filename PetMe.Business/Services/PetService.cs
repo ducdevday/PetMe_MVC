@@ -21,9 +21,9 @@ namespace PetMe.Business.Services
     public class PetService : IPetService
     {
         private readonly IPetRepository _petRepository;
-        private readonly PetOwnerRepository _petOwnerRepository;
+        private readonly IPetOwnerRepository _petOwnerRepository;
 
-        public PetService(IPetRepository petRepository, PetOwnerRepository petOwnerRepository)
+        public PetService(IPetRepository petRepository, IPetOwnerRepository petOwnerRepository)
         {
             _petRepository = petRepository;
             _petOwnerRepository = petOwnerRepository;

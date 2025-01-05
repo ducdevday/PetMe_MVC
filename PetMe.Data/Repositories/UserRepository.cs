@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 
 namespace PetMe.DataAccess.Repositories
 {
-    public interface IUserRepository {
+    public interface IUserRepository : IRepository<User>
+    {
         Task<List<User>> GetUsersByLocationAsync(string city, string district);
     }
-    public class UserRepository : IUserRepository, IRepository<User>
+    public class UserRepository : IUserRepository
     {
         private readonly PetMeDbContext _context;
 
@@ -21,16 +22,10 @@ namespace PetMe.DataAccess.Repositories
             _context = context;
         }
 
-
         public async Task AddAsync(User entity)
         {
             await _context.Users.AddAsync(entity);
             await _context.SaveChangesAsync();
-        }
-
-        public async Task<IEnumerable<User>> GetAllAsync()
-        {
-            return await _context.Users.ToListAsync();
         }
         public async Task UpdateAsync(User entity)
         {
@@ -48,6 +43,11 @@ namespace PetMe.DataAccess.Repositories
             return await _context.Users
                 .Where(u => u.City == city && u.District == district)
                 .ToListAsync();
+        }
+
+        public async Task<List<User>> GetAllAsync()
+        {
+            return await _context.Users.ToListAsync();
         }
     }
 }
