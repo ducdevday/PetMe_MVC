@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PetMe.Business\PetMe.Business.csproj" />
     <ProjectReference Include="..\PetMe.Core\PetMe.Data.csproj" />
     <ProjectReference Include="..\PetMe.Data\PetMe.DataAccess.csproj" />
     <ProjectReference Include="..\PetMe.Setting\PetMe.Setting.csproj" />

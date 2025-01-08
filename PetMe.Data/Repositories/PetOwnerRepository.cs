@@ -15,11 +15,11 @@ namespace PetMe.DataAccess.Repositories
         Task<PetOwner?> GetPetOwnerByPetIdAsync(int petId);
     }
 
-    public class PetOwnerRepositopry : IPetOwnerRepository
+    public class PetOwnerRepository : IPetOwnerRepository
     {
         private readonly PetMeDbContext _context;
 
-        public PetOwnerRepositopry(PetMeDbContext context)
+        public PetOwnerRepository(PetMeDbContext context)
         {
             _context = context;
         }

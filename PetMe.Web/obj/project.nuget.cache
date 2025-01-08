@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "yYC/TkhH+yA=",
+  "dgSpecHash": "iS8Y9F5NjwA=",
   "success": true,
   "projectFilePath": "E:\\WorkSpace\\Home\\Dotnet\\PetMe_MVC\\PetMe.Web\\PetMe.Web.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ming Duc\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Ming Duc\\.nuget\\packages\\dotnetenv\\3.1.1\\dotnetenv.3.1.1.nupkg.sha512",
     "C:\\Users\\Ming Duc\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Ming Duc\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

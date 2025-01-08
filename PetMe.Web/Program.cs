@@ -1,7 +1,10 @@
 ﻿using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
+using PetMe.Business.Services;
 using PetMe.Core.Entities;
 using PetMe.Data;
+using PetMe.Data.Repositories;
+using PetMe.DataAccess.Repositories;
 using PetMe.Setting;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,11 +38,35 @@ builder.Services.AddAuthentication("Cookies")
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
         options.SlidingExpiration = true;
     });
-
+builder.Services.AddHttpClient();
 builder.Services.AddAuthorization();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+// Add services to the container
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IRepository<User>, UserRepository>();
+builder.Services.AddScoped<IAdoptionService, AdoptionService>();
+builder.Services.AddScoped<IAdoptionRepository, AdoptionRepository>();
+builder.Services.AddScoped<IPetService, PetService>();
+builder.Services.AddScoped<IPetRepository, PetRepository>();
+builder.Services.AddScoped<IAdoptionRepository, AdoptionRepository>();
+builder.Services.AddScoped<IAdoptionService, AdoptionService>();
+builder.Services.AddScoped<IPetOwnerRepository, PetOwnerRepository>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IPetOwnerService, PetOwnerService>();
+builder.Services.AddScoped<IAdoptionRequestRepository, AdoptionRequestRepository>();
+builder.Services.AddScoped<IAdoptionRequestService, AdoptionRequestService>();
+builder.Services.AddScoped<ILostPetAdRepository, LostPetAdRepository>();
+builder.Services.AddScoped<ILostPetAdService, LostPetAdService>();
+builder.Services.AddScoped<IHelpRequestRepository, HelpRequestRepository>();
+builder.Services.AddScoped<IHelpRequestService, HelpRequestService>();
+builder.Services.AddScoped<IVeterinarianService, VeterinarianService>();
+builder.Services.AddScoped<IVeterinarianRepository, VeterinarianRepository>();
+builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
