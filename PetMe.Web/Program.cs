@@ -6,10 +6,6 @@ using PetMe.Setting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-var app = builder.Build();
 var setting = EnviromentSetting.GetInstance();
 
 // SMTP Settings
@@ -41,6 +37,10 @@ builder.Services.AddAuthentication("Cookies")
     });
 
 builder.Services.AddAuthorization();
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

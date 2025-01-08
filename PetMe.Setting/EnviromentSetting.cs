@@ -33,6 +33,7 @@ namespace PetMe.Setting
 
                         _databaseConnectionString = Environment.GetEnvironmentVariable(DATABASE_CONNECTION_STRING);
                         _smtp_host = Environment.GetEnvironmentVariable(SMTP_HOST);
+                        _smtp_port =  Environment.GetEnvironmentVariable(SMTP_PORT);
                         _smtp_password = Environment.GetEnvironmentVariable(SMTP_PASSWORD);
                         _smtp_from_email = Environment.GetEnvironmentVariable(SMTP_FROM_EMAIL);
                     }

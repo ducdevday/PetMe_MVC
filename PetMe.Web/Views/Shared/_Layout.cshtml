@@ -3,47 +3,97 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PetMe.Web</title>
+    <title>@ViewData["Title"] - PetMe</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/PetMe.Web.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/adoption.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/helpRequest.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/lostPetAd.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/pet.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/veterinarian.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/footer.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/about.css" asp-append-version="true" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PetMe.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                    PetMe
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                <div class="collapse navbar-collapse" id="navbarContent">
+
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+
+    <div class="container pt-3 flex-grow-1">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer">
         <div class="container">
-            &copy; 2025 - PetMe.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase fw-bold">About PetMe</h5>
+                    <p>
+                        PetMe is dedicated to creating a community for pet lovers, providing resources for adoption, lost pet ads, and help requests.
+                    </p>
+                </div>
+                <!-- Quick Links Section -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase fw-bold">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="@Url.Action("Index", "Home")"><i class="bi bi-house-door-fill"></i> Home</a></li>
+                        <li><a href="@Url.Action("About", "Home")"><i class="bi bi-info-circle-fill"></i> About Us</a></li>
+                        <li><a href="@Url.Action("Index", "Adoption")"><i class="bi bi-clipboard-heart-fill"></i> Adoption</a></li>
+                        <li><a href="@Url.Action("Index", "LostPetAd")"><i class="bi bi-bookmark-heart-fill"></i> Lost Pet Ads</a></li>
+                        <li><a href="@Url.Action("Index", "HelpRequest")"><i class="bi bi-chat-square-heart-fill"></i> Help Requests</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Section -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase fw-bold">Contact Me</h5>
+                    <p><i class="bi bi-envelope"></i> <strong>Email:</strong> ducdevday@gmail.com</p>
+                    <p><i class="bi bi-phone"></i> <strong>Phone:</strong> +85 334 901 237</p>
+                    <p><i class="bi bi-geo-alt"></i> <strong>Address:</strong> Ho Chi Minh, VietNam</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container d-flex justify-content-between align-items-center">
+                <p class="mb-0">&copy; 2024 PetMe - Minh Duc. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com" class="me-3" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.twitter.com" class="me-3" target="_blank" title="Twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="https://www.instagram.com" class="me-3" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
         </div>
     </footer>
+
+
+
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -11,11 +11,7 @@ namespace PetMe.Data.Helpers
     {
         private const string CssLink = "<link rel='stylesheet' type='text/css' href='https://yourdomain.com/path/to/email.css'>";
 
-<<<<<<< HEAD
-        public static string GenerateAdoptionRequestEmailBody(User user, Pet pet, AdoptionRequest adoptionRequest)
-=======
         public string GenerateAdoptionRequestEmailBody(User user, Pet pet, AdoptionRequest adoptionRequest)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
         <html>
@@ -71,11 +67,7 @@ namespace PetMe.Data.Helpers
         </html>";
         }
 
-<<<<<<< HEAD
-        public static string GenerateAdoptionRequestConfirmationEmailBody(User user, Pet pet)
-=======
         public string GenerateAdoptionRequestConfirmationEmailBody(User user, Pet pet)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
         <html>
@@ -98,11 +90,7 @@ namespace PetMe.Data.Helpers
         </html>";
         }
 
-<<<<<<< HEAD
-        public static string GenerateRejectionEmailBody(User user, Pet pet)
-=======
         public string GenerateRejectionEmailBody(User user, Pet pet)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
         <html>
@@ -124,11 +112,7 @@ namespace PetMe.Data.Helpers
         </html>";
         }
 
-<<<<<<< HEAD
         public static string GenerateAdoptionConfirmationEmailBody(User user, Pet pet)
-=======
-        public string GenerateAdoptionConfirmationEmailBody(User user, Pet pet)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
         <html>
@@ -151,11 +135,7 @@ namespace PetMe.Data.Helpers
         </html>";
         }
 
-<<<<<<< HEAD
         public static string GeneratePetDeletionEmailBody(User user, Pet pet)
-=======
-        public string GeneratePetDeletionEmailBody(User user, Pet pet)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
         <html>
@@ -178,11 +158,7 @@ namespace PetMe.Data.Helpers
         </html>";
         }
 
-<<<<<<< HEAD
         public static string GeneratePetUpdateEmailBody(User user, Pet pet)
-=======
-        public string GeneratePetUpdateEmailBody(User user, Pet pet)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
         <html>
@@ -211,11 +187,7 @@ namespace PetMe.Data.Helpers
         </html>";
         }
 
-<<<<<<< HEAD
         public static string GeneratePetCreationEmailBody(User user, Pet pet)
-=======
-        public string GeneratePetCreationEmailBody(User user, Pet pet)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
         <html>
@@ -239,11 +211,7 @@ namespace PetMe.Data.Helpers
         }
 
 
-<<<<<<< HEAD
         public static string GenerateVeterinarianNotificationEmailBody(HelpRequest helpRequest, User requester)
-=======
-        public string GenerateVeterinarianNotificationEmailBody(HelpRequest helpRequest, User requester)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
         <html>
@@ -274,12 +242,7 @@ namespace PetMe.Data.Helpers
         </html>";
         }
 
-<<<<<<< HEAD
         public static string GenerateCreateHelpRequestEmailBody(HelpRequest helpRequest, User requester)
-=======
-        // Create HelpRequest Email Body
-        public string GenerateCreateHelpRequestEmailBody(HelpRequest helpRequest, User requester)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
         <html>
@@ -310,12 +273,7 @@ namespace PetMe.Data.Helpers
         </html>";
         }
 
-<<<<<<< HEAD
         public static string GenerateEditHelpRequestEmailBody(HelpRequest helpRequest, User requester)
-=======
-        // Edit HelpRequest Email Body
-        public string GenerateEditHelpRequestEmailBody(HelpRequest helpRequest, User requester)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
         <html>
@@ -346,12 +304,7 @@ namespace PetMe.Data.Helpers
         </html>";
         }
 
-<<<<<<< HEAD
         public static string GenerateDeleteHelpRequestEmailBody(HelpRequest helpRequest, User requester)
-=======
-        // Delete HelpRequest Email Body
-        public string GenerateDeleteHelpRequestEmailBody(HelpRequest helpRequest, User requester)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
         <html>
@@ -380,13 +333,8 @@ namespace PetMe.Data.Helpers
         </body>
         </html>";
         }
-<<<<<<< HEAD
 
         public static string GenerateNewCommentEmailBody(HelpRequest helpRequest, Comment comment, User commenter)
-=======
-        // Yeni yorum için e-posta gövdesi oluşturma
-        public string GenerateNewCommentEmailBody(HelpRequest helpRequest, Comment comment, User commenter)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return "<h2>New Comment on Help Request: Animal in Need!</h2>" +
                    "<p><strong>Help Request Title:</strong> " + helpRequest.Title + "</p>" +
@@ -402,12 +350,7 @@ namespace PetMe.Data.Helpers
                    "<p>Thank you for your attention.</p>";
         }
 
-<<<<<<< HEAD
         public static string GenerateNewLostPetAdEmailBody(LostPetAd lostPetAd, User user)
-=======
-        // Kayıp ilanı için yeni e-posta içeriği oluşturuluyor
-        public string GenerateNewLostPetAdEmailBody(LostPetAd lostPetAd, User user)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
             A new lost pet ad has been posted.
@@ -419,12 +362,8 @@ namespace PetMe.Data.Helpers
         ";
         }
 
-<<<<<<< HEAD
-        public static string GenerateUpdatedLostPetAdEmailBody(LostPetAd lostPetAd, User user)
-=======
         // Kayıp ilanı güncellenince gönderilecek e-posta içeriği
         public string GenerateUpdatedLostPetAdEmailBody(LostPetAd lostPetAd, User user)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
             The lost pet ad has been updated.
@@ -436,12 +375,7 @@ namespace PetMe.Data.Helpers
         ";
         }
 
-<<<<<<< HEAD
         public static string GenerateDeletedLostPetAdEmailBody(LostPetAd lostPetAd, User user)
-=======
-        // Kayıp ilanı silindiğinde gönderilecek e-posta içeriği
-        public string GenerateDeletedLostPetAdEmailBody(LostPetAd lostPetAd, User user)
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         {
             return $@"
             A lost pet ad has been deleted.

@@ -40,7 +40,7 @@ namespace PetMe.Business.Services
 
         public async Task<HelpRequest> GetHelpRequestByIdAsync(int id)
         {
-            var helpRequest = _helpRequestRepository.GetHelpRequestByIdAsync(id);
+            var helpRequest = await _helpRequestRepository.GetHelpRequestByIdAsync(id);
             if (helpRequest == null) { 
                 throw new KeyNotFoundException();
             }

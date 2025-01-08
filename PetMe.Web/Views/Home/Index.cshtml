@@ -1,8 +1,49 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="home-hero">
+    <div class="home-hero-overlay">
+        <div class="hero-content text-white">
+            <h1 class="display-4">Welcome to PetMe</h1>
+            <p class="lead">Find your perfect pet or help those in need!</p>
+            <!-- Hero CTA -->
+            <a class="btn btn-hero-cta" asp-controller="Adoption" asp-action="Index">
+                Explore Adoptions
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+            <div class="info-card p-4 text-center shadow-sm">
+                <i class="bi bi-heart-fill icon-big text-petsolive"></i>
+                <h3>Adopt a Pet</h3>
+                <p>Give a loving home to a pet in need. Browse our adoption listings!</p>
+                <a asp-controller="Adoption" asp-action="Index" class="btn btn-primary">See Pets</a>
+            </div>
+        </div>
+
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+            <div class="info-card p-4 text-center shadow-sm">
+                <i class="bi bi-search icon-big text-petsolive"></i>
+                <h3>Lost Pets</h3>
+                <p>Help reunite lost pets with their owners. Post or find lost pet ads.</p>
+                <a asp-controller="LostPetAd" asp-action="Index" class="btn btn-primary">View Lost Pets</a>
+            </div>
+        </div>
+
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+            <div class="info-card p-4 text-center shadow-sm">
+                <i class="bi bi-geo-alt-fill icon-big text-petsolive"></i>
+                <h3>Assistance</h3>
+                <p class="max-line">Need help with a pet-related issue? Request assistance or see existing help requests!</p>
+                <a asp-controller="HelpRequest" asp-action="Index" class="btn btn-primary">Get Help</a>
+            </div>
+        </div>
+    </div>
 </div>
