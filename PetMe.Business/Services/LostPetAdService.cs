@@ -21,25 +21,13 @@ namespace PetMe.Business.Services
         private readonly ILostPetAdRepository _lostPetAdRepository;
         private readonly IUserRepository _userRepository;
         private readonly IEmailService _emailService;
-<<<<<<< HEAD
-=======
-        private readonly EmailHelper _emailHelper;
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
 
         public LostPetAdService(ILostPetAdRepository lostPetAdRepository, IUserRepository userRepository, IEmailService emailService)
         {
             _lostPetAdRepository = lostPetAdRepository;
             _userRepository = userRepository;
             _emailService = emailService;
-<<<<<<< HEAD
         }
-
-=======
-            _emailHelper = new EmailHelper(); // Initialize EmailHelper
-        }
-
-        // Yeni kayıp ilanı oluşturmak için metod
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         public async Task CreateLostPetAdAsync(LostPetAd lostPetAd, string city, string district)
         {
             lostPetAd.LastSeenCity = city;
@@ -58,28 +46,16 @@ namespace PetMe.Business.Services
             foreach (var targetUser in usersInLocation)
             {
                 var subject = "New Lost Pet Ad Created";
-<<<<<<< HEAD
                 var body = EmailHelper.GenerateNewLostPetAdEmailBody(lostPetAd, user);
-=======
-                var body = _emailHelper.GenerateNewLostPetAdEmailBody(lostPetAd, user);
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
                 await _emailService.SendEmailAsync(targetUser.Email, subject, body);
             }
         }
 
-<<<<<<< HEAD
-=======
-        // Kayıp ilanlarını almak için metod
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         public async Task<List<LostPetAd>> GetAllLostPetAdsAsync()
         {
             return await _lostPetAdRepository.GetAllAsync();
         }
 
-<<<<<<< HEAD
-=======
-        // Kayıp ilanını ID'ye göre almak için metod
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         public async Task<LostPetAd?> GetLostPetAdByIdAsync(int id)
         {
             var lostPetAd = await _lostPetAdRepository.GetByIdAsync(id);
@@ -92,19 +68,11 @@ namespace PetMe.Business.Services
             return lostPetAd;
         }
 
-<<<<<<< HEAD
-=======
-        // Kayıp ilanını güncellemek için metod
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         public async Task UpdateLostPetAdAsync(LostPetAd lostPetAd)
         {
             await _lostPetAdRepository.UpdateLostPetAdAsync(lostPetAd);
         }
 
-<<<<<<< HEAD
-=======
-        // Kayıp ilanını silmek için metod
->>>>>>> 3d3110e53285da6bf21caa8edb3aa016a72d2768
         public async Task DeleteLostPetAdAsync(LostPetAd lostPetAd)
         {
             await _lostPetAdRepository.DeleteLostPetAdAsync(lostPetAd);

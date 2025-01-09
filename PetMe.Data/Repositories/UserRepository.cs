@@ -9,9 +9,13 @@ using System.Threading.Tasks;
 
 namespace PetMe.DataAccess.Repositories
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IUserRepository
     {
         Task<List<User>> GetUsersByLocationAsync(string city, string district);
+        Task<List<User>> GetAllAsync();
+        Task AddAsync(User user);
+        Task<User?> GetByIdAsync(int id);
+        Task UpdateAsync(User user);
     }
     public class UserRepository : IUserRepository
     {

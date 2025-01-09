@@ -7,11 +7,18 @@ namespace PetMe.Data
     public class PetMeDbContext : DbContext
     {
         private EnviromentSetting _setting = EnviromentSetting.GetInstance();
-        public PetMeDbContext() : base()
-        {
 
+        public PetMeDbContext(DbContextOptions<PetMeDbContext> options) : base(options)
+        {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseNpgsql(_setting.GetConnectionString());
+            }
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AdminCfg());
@@ -23,11 +30,6 @@ namespace PetMe.Data
             modelBuilder.ApplyConfiguration(new LostPetAdCfg());
             modelBuilder.ApplyConfiguration(new PetOwnerCfg());
             modelBuilder.ApplyConfiguration(new VeterinarianCfg());
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql(_setting.GetConnectionString());
         }
 
         public DbSet<User> Users { get; set; }

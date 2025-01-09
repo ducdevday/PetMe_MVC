@@ -26,7 +26,7 @@ namespace PetMe.Business.Services
 
         public async Task<List<Province>> GetProvincesAsync()
         {
-            var response = await _httpClient.GetAsync("https://vapi.vnappmob.com/api/province/");
+            var response = await _httpClient.GetAsync("https://vapi.vnappmob.com/api/v2/province/");
             List<Province> provinces = [];
             if (response.IsSuccessStatusCode)
             {
@@ -42,7 +42,7 @@ namespace PetMe.Business.Services
         
         public async Task<List<District>> GetDisTrictsAsync(int provinceId)
         {
-            var response = await _httpClient.GetAsync($"https://vapi.vnappmob.com/api/province/district/{provinceId}");
+            var response = await _httpClient.GetAsync($"https://vapi.vnappmob.com/api/v2/province/district/{provinceId}");
             List<District> districts = [];
             if (response.IsSuccessStatusCode)
             {

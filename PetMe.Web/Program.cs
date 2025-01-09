@@ -40,33 +40,36 @@ builder.Services.AddAuthentication("Cookies")
     });
 builder.Services.AddHttpClient();
 builder.Services.AddAuthorization();
-// Add services to the container.
 builder.Services.AddControllersWithViews();
-// Add services to the container
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IRepository<User>, UserRepository>();
-builder.Services.AddScoped<IAdoptionService, AdoptionService>();
-builder.Services.AddScoped<IAdoptionRepository, AdoptionRepository>();
-builder.Services.AddScoped<IPetService, PetService>();
-builder.Services.AddScoped<IPetRepository, PetRepository>();
-builder.Services.AddScoped<IAdoptionRepository, AdoptionRepository>();
-builder.Services.AddScoped<IAdoptionService, AdoptionService>();
-builder.Services.AddScoped<IPetOwnerRepository, PetOwnerRepository>();
-builder.Services.AddScoped<IEmailService, EmailService>();
-builder.Services.AddScoped<IPetOwnerService, PetOwnerService>();
-builder.Services.AddScoped<IAdoptionRequestRepository, AdoptionRequestRepository>();
-builder.Services.AddScoped<IAdoptionRequestService, AdoptionRequestService>();
-builder.Services.AddScoped<ILostPetAdRepository, LostPetAdRepository>();
-builder.Services.AddScoped<ILostPetAdService, LostPetAdService>();
-builder.Services.AddScoped<IHelpRequestRepository, HelpRequestRepository>();
-builder.Services.AddScoped<IHelpRequestService, HelpRequestService>();
-builder.Services.AddScoped<IVeterinarianService, VeterinarianService>();
-builder.Services.AddScoped<IVeterinarianRepository, VeterinarianRepository>();
-builder.Services.AddScoped<IAdminService, AdminService>();
-builder.Services.AddScoped<IAdminRepository, AdminRepository>();
-builder.Services.AddScoped<ICommentService, CommentService>();
-builder.Services.AddScoped<ICommentRepository, CommentRepository>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddControllers();
+
+builder.Services.AddDbContext<PetMeDbContext>(options =>
+    options.UseNpgsql(setting.GetConnectionString()));
+
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IAdoptionService, AdoptionService>();
+builder.Services.AddTransient<IAdoptionRepository, AdoptionRepository>();
+builder.Services.AddTransient<IPetService, PetService>();
+builder.Services.AddTransient<IPetRepository, PetRepository>();
+builder.Services.AddTransient<IAdoptionService, AdoptionService>();
+builder.Services.AddTransient<IPetOwnerRepository, PetOwnerRepository>();
+builder.Services.AddTransient<IEmailService, EmailService>();
+builder.Services.AddTransient<IPetOwnerService, PetOwnerService>();
+builder.Services.AddTransient<IAdoptionRequestRepository, AdoptionRequestRepository>();
+builder.Services.AddTransient<IAdoptionRequestService, AdoptionRequestService>();
+builder.Services.AddTransient<ILostPetAdRepository, LostPetAdRepository>();
+builder.Services.AddTransient<ILostPetAdService, LostPetAdService>();
+builder.Services.AddTransient<IHelpRequestRepository, HelpRequestRepository>();
+builder.Services.AddTransient<IHelpRequestService, HelpRequestService>();
+builder.Services.AddTransient<IVeterinarianService, VeterinarianService>();
+builder.Services.AddTransient<IVeterinarianRepository, VeterinarianRepository>();
+builder.Services.AddTransient<IAdminService, AdminService>();
+builder.Services.AddTransient<IAdminRepository, AdminRepository>();
+builder.Services.AddTransient<ICommentService, CommentService>();
+builder.Services.AddTransient<ICommentRepository, CommentRepository>();
+builder.Services.AddTransient<IVnAddressService, VnAddressService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -86,5 +89,4 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
 app.Run();
