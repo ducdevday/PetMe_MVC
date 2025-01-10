@@ -246,6 +246,10 @@ namespace PetMe.Web.Controllers
             }
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bff0f066ccf0a90dbdb0c11703c71d5d43668258
         private async Task SendPetUpdateEmailAsync(User user, Pet pet)
         {
             var subject = "The pet you requested adoption for has been updated";
