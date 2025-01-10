@@ -59,6 +59,36 @@ namespace PetMe.Web.Controllers
             return Json(districts); 
         }
 
+        public IActionResult Login() {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(string username, string password) {
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                ModelState.AddModelError("", "Username and password are required.");
+                return View();
+            }
+
+            try
+            {
+                var user = await _userService.AuthenticateAsync(username, password);
+                if (user != null) { 
+                    HttpContext.Session.SetString("Username", user.Username);
+                    HttpContext.Session.SetInt32("UserId", user.Id);
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ModelState.AddModelError("", "Invalid username or password");
+            }
+            catch (Exception ex) {
+                ModelState.AddModelError("", ex.Message);
+            }
+
+            return View();
+        }
 
     }
 
