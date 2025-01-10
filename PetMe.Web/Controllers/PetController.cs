@@ -2,6 +2,7 @@
 using PetMe.Business.Services;
 using PetMe.Data.Entities;
 using PetMe.Data.Enums;
+using PetMe.Data.Helpers;
 using PetMe.DataAccess.Repositories;
 
 namespace PetMe.Web.Controllers
@@ -11,27 +12,32 @@ namespace PetMe.Web.Controllers
         private readonly IPetService _petService;
         private readonly IUserService _userService;
         private readonly IAdoptionService _adoptionService;
+        private readonly IAdoptionRequestService _adoptionRequestService;
         private readonly IEmailService _emailService;
 
         public PetController(
             IPetService petService,
             IUserService userService,
             IAdoptionService adoptionService,
+            IAdoptionRequestService adoptionRequestService,
             IEmailService emailService)
         {
             _petService = petService;
             _userService = userService;
             _adoptionService = adoptionService;
+            _adoptionRequestService = adoptionRequestService;
             _emailService = emailService;
         }
 
-        private async Task<User?> GetLoggedInUserAsync() {
+        private async Task<User?> GetLoggedInUserAsync()
+        {
             var username = HttpContext.Session.GetString("Username");
             if (username == null) return null;
             return await _userService.GetUserByUsernameAsync(username);
         }
 
-        private IActionResult? RedirectToLoginIfNotLoggedIn() {
+        private IActionResult? RedirectToLoginIfNotLoggedIn()
+        {
             if (HttpContext.Session.GetString("Username") == null)
             {
                 return RedirectToAction("Login", "Account");
@@ -58,7 +64,7 @@ namespace PetMe.Web.Controllers
 
             if (ModelState.IsValid)
             {
-               
+
                 await _petService.CreatePetAsync(pet);
 
                 var petOwner = new PetOwner
@@ -76,6 +82,101 @@ namespace PetMe.Web.Controllers
             return View(pet);
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            var pet = await _petService.GetPetByIdAsync(id);
+            if (pet == null)
+            {
+                ViewBag.ErrorMessage = "Pet Not Found";
+            }
 
+            var adoptionRequests = await _adoptionService.GetAdoptionByPetIdAsync(id);
+            var adoption = await _adoptionService.GetAdoptionByPetIdAsync(id);
+
+            var user = await GetLoggedInUserAsync();
+            var isUserLoggedIn = user != null;
+            var isOwner = user != null && await _petService.IsUserOwnerOfPetAsync(id, user.Id);
+            var hasAdoptionRequest = user != null && await _adoptionService.GetAdoptionRequestByUserAndPetAsync(user.Id, id) != null;
+
+            ViewBag.AdoptionStatus = adoption != null
+            ? "This pet has already been adopted."
+            : "This pet is available for adoption.";
+
+            ViewBag.IsUserLoggedIn = isUserLoggedIn;
+            ViewBag.Adoption = adoption;
+            ViewBag.IsOwner = isOwner;
+            ViewBag.AdoptionRequests = adoptionRequests;
+            ViewBag.HasAdoptionRequest = hasAdoptionRequest;
+
+            return View(pet);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var loginRedirect = RedirectToLoginIfNotLoggedIn();
+            if (loginRedirect != null) return loginRedirect;
+
+            var pet = await _petService.GetPetByIdAsync(id);
+            if (pet == null)
+            {
+                ViewBag.ErrorMessage = "Pet not found.";
+                return View("Error");
+            }
+
+            var adoption = await _adoptionService.GetAdoptionByPetIdAsync(id);
+            if (adoption != null)
+            {
+                ViewBag.ErrorMessage = "This pet has already been adopted and cannot be edited.";
+                return View("Error");
+            }
+
+            var user = await GetLoggedInUserAsync();
+            if (!await _petService.IsUserOwnerOfPetAsync(id, user.Id))
+            {
+                ViewBag.ErrorMessage = "You are not authorized to edit this pet.";
+                return View("Error");
+            }
+            ViewData["Species"] = new List<Species> { Species.Dog, Species.Cat, Species.Hamster, Species.Rabbit };
+            return View(pet);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Pet updatedPet)
+        {
+            var loginRedirect = RedirectToLoginIfNotLoggedIn();
+            if (loginRedirect != null) return loginRedirect;
+
+            var user = await GetLoggedInUserAsync();
+            var pet = await _petService.GetPetByIdAsync(id);
+            if (pet == null)
+            {
+                ViewBag.ErrorMessage = "Pet not found.";
+                return View("Error");
+            }
+
+            if (!await _petService.IsUserOwnerOfPetAsync(id, user.Id))
+            {
+                ViewBag.ErrorMessage = "You are not authorized to edit this pet.";
+                return View("Error");
+            }
+
+            await _petService.UpdatePetAsync(id, updatedPet, user.Id);
+
+            var adoptionRequests = await _adoptionRequestService.GetAdoptionRequestsByPetIdAsync(id);
+            foreach (var request in adoptionRequests)
+            {
+                await SendPetUpdateEmailAsync(request.User, pet);
+            }
+
+            return RedirectToAction("Details", new { id = pet.Id });
+        }
+
+        private async Task SendPetUpdateEmailAsync(User user, Pet pet)
+        {
+            var subject = "The pet you requested adoption for has been updated";
+            var body = EmailHelper.GeneratePetUpdateEmailBody(user, pet);
+            await _emailService.SendEmailAsync(user.Email, subject, body);
+        }
     }
 }

@@ -1,0 +1,180 @@
+﻿@using PetMe.Data.Entities
+@using PetMe.Data.Enums
+
+@model Pet
+@{
+    ViewData["Title"] = "Pet Details";
+    Layout = "_Layout";
+
+}
+<div class="container my-5">
+    <!-- Pet Details Section -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg">
+                <div class="row g-0">
+                    <!-- Pet Image -->
+                    <div class="col-md-5">
+                        <img src="@Model.ImageUrl" class="img-fluid rounded-start" alt="@Model.Name" style="object-fit: cover; height: 100%;">
+                    </div>
+                    <!-- Pet Info -->
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <h3 class="card-title text-primary">@Model.Name</h3>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>Species:</strong> <span class="badge bg-secondary">@Model.Species</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>Breed:</strong> @Model.Breed
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>Age:</strong> @Model.Age years
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>Gender:</strong> @Model.Gender
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>Weight:</strong> @Model.Weight kg
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Description:</strong> <p>@Model.Description</p>
+                                </li>
+                            </ul>
+
+                            @if (ViewBag.Adoption != null)
+                            {
+                                <hr>
+                                <h5 class="text-success">Adoption Details:</h5>
+                                <p><strong>Adopted:</strong> Yes</p>
+                                <p><strong>Adopted by:</strong> @ViewBag.Adoption.User.Username</p>
+                                <p><strong>Adoption Date:</strong> @ViewBag.Adoption.AdoptionDate.ToString("MM/dd/yyyy")</p>
+                            }
+                            else
+                            {
+                                <p><strong>Adopted:</strong> <span class="badge bg-danger">No</span></p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-lg-8">
+            <div class="card-deck">
+                <!-- Back to Adoption List Button -->
+                <div class="card text-center shadow-sm">
+                    <div class="card-body">
+                        <a asp-controller="Adoption" asp-action="Index" class="btn btn-secondary btn-block">Back to Adoption List</a>
+                    </div>
+                </div>
+
+                <!-- Conditional Buttons -->
+                @if (!ViewBag.IsUserLoggedIn)
+                {
+                <div class="card text-center shadow-sm">
+                    <div class="card-body">
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-danger btn-block">You need to log in to adopt a pet</a>
+                    </div>
+                </div>
+                }
+                else
+                {
+                    @if (ViewBag.Adoption == null && !ViewBag.IsOwner)
+                    {
+                        <!-- Check if the user has already submitted an adoption request -->
+                        @if (ViewBag.HasAdoptionRequest == true)
+                        {
+                        <div class="card text-center shadow-sm">
+                            <div class="card-body">
+                                <a href="#" class="btn btn-secondary btn-block disabled" tabindex="-1" aria-disabled="true">
+                                    You have already submitted an adoption request for this pet
+                                </a>
+                            </div>
+                        </div>
+                        }
+                        else
+                        {
+                        <div class="card text-center shadow-sm">
+                            <div class="card-body">
+                                <a asp-controller="Adoption" asp-action="Adopt" asp-route-petId="@Model.Id" class="btn btn-primary btn-block">Adopt</a>
+                            </div>
+                        </div>
+                        }
+                    }
+                    @if (ViewBag.IsOwner)
+                    {
+                        @if (ViewBag.Adoption == null)
+                        {
+                        <div class="card text-center shadow-sm">
+                            <div class="card-body">
+                                <a asp-controller="Pet" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-block">Edit</a>
+                                <form asp-controller="Pet" asp-action="Delete" asp-route-id="@Model.Id" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-danger btn-block mt-2">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                        }
+                        else
+                        {
+                            <div class="card text-center shadow-sm">
+                                <div class="card-body">
+                                    <a href="#" class="btn btn-warning btn-block disabled" tabindex="-1" aria-disabled="true">This pet has already been adopted</a>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Adoption Requests Section -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-lg-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Adoption Requests</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Adoption Requests Section -->
+                    @if (ViewBag.AdoptionRequests != null && ViewBag.AdoptionRequests.Count > 0)
+                    {
+                    <ul class="list-group">
+                        @foreach (var request in ViewBag.AdoptionRequests)
+                        {
+                        <li class="list-group-item mb-3 p-3 shadow-sm">
+                            <div class="d-flex justify-content-between">
+                                <strong>@request.User.Username</strong>
+                                <span class="badge bg-@(request.Status == AdoptionStatus.Pending ? "warning" : (request.Status == AdoptionStatus.Rejected ? "danger" : "success"))">@request.Status</span>
+                            </div>
+                            <p class="mt-2 text-muted">@request.Message</p>
+                            <small class="text-secondary">Requested on: @request.RequestDate.ToString("MM/dd/yyyy")</small>
+
+                            @if (request.Status == AdoptionStatus.Pending && ViewBag.IsOwner)
+                            {
+                            <!-- Only show the approve button if the current user is the owner of the pet -->
+                            <form asp-controller="Adoption" asp-action="ApproveRequest" method="post">
+                                <input type="hidden" name="adoptionRequestId" value="@request.Id" />
+                                <input type="hidden" name="petId" value="@Model.Id" />
+                                <button type="submit" class="btn btn-success mt-2">Approve</button>
+                            </form>
+                            }
+                        </li>
+                        }
+                    </ul>
+                    }
+                    else
+                    {
+                    <p class="text-muted">No adoption requests yet.</p>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
