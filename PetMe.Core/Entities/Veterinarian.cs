@@ -1,11 +1,11 @@
-﻿using PetMe.Core.Enums;
+﻿using PetMe.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PetMe.Core.Entities
+namespace PetMe.Data.Entities
 {
     public class Veterinarian
     {

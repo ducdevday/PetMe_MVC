@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PetMe.Core.Configurations;
-using PetMe.Core.Entities;
+using PetMe.Data.Configurations;
+using PetMe.Data.Entities;
 using PetMe.Setting;
 namespace PetMe.Data
 {

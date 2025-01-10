@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PetMe.Core.Entities;
-using PetMe.Core.Enums;
 using PetMe.Data;
+using PetMe.Data.Entities;
+using PetMe.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

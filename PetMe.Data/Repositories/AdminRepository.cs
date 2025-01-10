@@ -1,10 +1,11 @@
-﻿using System;
+﻿using PetMe.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PetMe.Data.Repositories
+namespace PetMe.DataAccess.Repositories
 {
     public interface IAdminRepository
     {

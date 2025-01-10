@@ -1,12 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PetMe.Core.Entities;
-using PetMe.Core.Enums;
 using PetMe.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PetMe.Data.Entities;
+using PetMe.Data.Enums;
 
 namespace PetMe.DataAccess.Repositories
 {

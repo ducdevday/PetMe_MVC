@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PetMe.Core.Entities
+namespace PetMe.Data.Entities
 {
     public class SmtpSettings
     {

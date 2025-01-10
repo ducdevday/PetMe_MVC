@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace PetMe.Core.Entities
+namespace PetMe.Data.Entities
 {
     public class User
     {

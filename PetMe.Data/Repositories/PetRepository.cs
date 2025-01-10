@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PetMe.Core.Entities;
 using PetMe.Data;
+using PetMe.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

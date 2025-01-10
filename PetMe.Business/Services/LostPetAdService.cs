@@ -1,11 +1,6 @@
-﻿using PetMe.Core.Entities;
+﻿using PetMe.Data.Entities;
 using PetMe.Data.Helpers;
 using PetMe.DataAccess.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PetMe.Business.Services
 {

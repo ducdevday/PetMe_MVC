@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetMe.Business.Services;
-using PetMe.Core.Entities;
 using PetMe.Data.Entities;
 
 namespace PetMe.Web.Controllers

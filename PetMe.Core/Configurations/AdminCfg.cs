@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PetMe.Core.Entities;
+using PetMe.Data.Entities;
 
-namespace PetMe.Core.Configurations
+namespace PetMe.Data.Configurations
 {
     public class AdminCfg : IEntityTypeConfiguration<Admin>
     {

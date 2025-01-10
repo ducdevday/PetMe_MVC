@@ -1,4 +1,4 @@
-﻿using PetMe.Core.Entities;
+﻿using PetMe.Data.Entities;
 using PetMe.DataAccess.Repositories;
 using System;
 using System.Collections.Generic;

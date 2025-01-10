@@ -1,9 +1,8 @@
 ﻿using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 using PetMe.Business.Services;
-using PetMe.Core.Entities;
 using PetMe.Data;
-using PetMe.Data.Repositories;
+using PetMe.Data.Entities;
 using PetMe.DataAccess.Repositories;
 using PetMe.Setting;
 

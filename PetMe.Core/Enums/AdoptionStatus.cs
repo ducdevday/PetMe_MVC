@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PetMe.Core.Enums
+namespace PetMe.Data.Enums
 {
     public enum AdoptionStatus
     {
