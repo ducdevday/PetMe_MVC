@@ -96,12 +96,7 @@ namespace PetMe.Business.Services
             pet.Age = updatedPet.Age;
             pet.Gender = updatedPet.Gender;
             pet.Weight = updatedPet.Weight;
-            pet.Color = updatedPet.Color;
-            pet.DateOfBirth = updatedPet.DateOfBirth;
             pet.Description = updatedPet.Description;
-            pet.VaccinationStatus = updatedPet.VaccinationStatus;
-            pet.MicrochipId = updatedPet.MicrochipId;
-            pet.IsNeutered = updatedPet.IsNeutered;
             pet.ImageUrl = updatedPet.ImageUrl;
 
             await _petRepository.UpdateAsync(pet);

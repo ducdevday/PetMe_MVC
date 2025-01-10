@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PetMe.Data;
@@ -12,9 +13,11 @@ using PetMe.Data;
 namespace PetMe.Data.Migrations
 {
     [DbContext(typeof(PetMeDbContext))]
-    partial class PetMeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250110095932_updatePetEntity")]
+    partial class updatePetEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -8,6 +8,8 @@ namespace PetMe.Data
     {
         private EnviromentSetting _setting = EnviromentSetting.GetInstance();
 
+        public PetMeDbContext() { }
+
         public PetMeDbContext(DbContextOptions<PetMeDbContext> options) : base(options)
         {
         }

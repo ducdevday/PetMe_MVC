@@ -35,10 +35,6 @@ namespace PetMe.Data.Helpers
                     <li><strong>Age:</strong> {pet.Age} years old</li>
                     <li><strong>Gender:</strong> {pet.Gender}</li>
                     <li><strong>Weight:</strong> {pet.Weight} kg</li>
-                    <li><strong>Color:</strong> {pet.Color}</li>
-                    <li><strong>Vaccination Status:</strong> {pet.VaccinationStatus}</li>
-                    <li><strong>Microchip ID:</strong> {pet.MicrochipId}</li>
-                    <li><strong>Is Neutered:</strong> {(pet.IsNeutered.HasValue ? (pet.IsNeutered.Value ? "Yes" : "No") : "Not specified")}</li>
                 </ul>
 
                 <div class='divider'></div>
