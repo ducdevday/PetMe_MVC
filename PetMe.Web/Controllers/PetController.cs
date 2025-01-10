@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetMe.Business.Services;
 using PetMe.Data.Entities;
+using PetMe.Data.Enums;
 using PetMe.DataAccess.Repositories;
 
 namespace PetMe.Web.Controllers
@@ -42,6 +43,7 @@ namespace PetMe.Web.Controllers
         {
             var loginRedirect = RedirectToLoginIfNotLoggedIn();
             if (loginRedirect != null) return loginRedirect;
+            ViewData["Species"] = new List<Species> { Species.Dog, Species.Cat, Species.Hamster, Species.Rabbit };
             return View();
         }
 
@@ -56,13 +58,14 @@ namespace PetMe.Web.Controllers
 
             if (ModelState.IsValid)
             {
+               
                 await _petService.CreatePetAsync(pet);
 
                 var petOwner = new PetOwner
                 {
                     PetId = pet.Id,
                     UserId = user.Id,
-                    OwnershipDate = DateTime.Now
+                    OwnershipDate = DateTime.UtcNow
                 };
 
                 await _petService.AssignPetOwnerAsync(petOwner);

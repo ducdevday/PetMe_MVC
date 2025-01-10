@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PetMe.Data.Enums
 {
-    public enum Speices
+    public enum Species
     {
         Dog,
         Cat,

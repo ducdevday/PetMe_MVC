@@ -11,7 +11,7 @@ namespace PetMe.Data.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Speices Species { get; set; }
+        public Species Species { get; set; }
         public string Breed { get; set; }
         public int Age { get; set; }
         public Gender Gender { get; set; }
