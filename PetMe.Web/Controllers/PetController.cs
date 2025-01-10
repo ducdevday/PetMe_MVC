@@ -172,10 +172,91 @@ namespace PetMe.Web.Controllers
             return RedirectToAction("Details", new { id = pet.Id });
         }
 
+        public async Task<IActionResult> Delete(int id) {
+            var loginRedirect = RedirectToLoginIfNotLoggedIn();
+            if (loginRedirect != null) return loginRedirect;
+
+            var pet = await _petService.GetPetByIdAsync(id);
+            if (pet == null)
+            {
+                ViewBag.ErrorMessage = "Pet not found.";
+                return View("Error");
+            }
+
+            var adoption = await _adoptionService.GetAdoptionByPetIdAsync(id);
+            if (adoption != null)
+            {
+                ViewBag.ErrorMessage = "This pet has already been adopted and cannot be deleted.";
+                return View("Error");
+            }
+
+            var user = await GetLoggedInUserAsync();
+            if (!await _petService.IsUserOwnerOfPetAsync(id, user.Id))
+            {
+                ViewBag.ErrorMessage = "You are not authorized to delete this pet.";
+                return View("Error");
+            }
+
+            return View(pet);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var loginRedirect = RedirectToLoginIfNotLoggedIn();
+            if (loginRedirect != null) return loginRedirect;
+
+            var user = await GetLoggedInUserAsync();
+            var pet = await _petService.GetPetByIdAsync(id);
+            if (pet == null)
+            {
+                ViewBag.ErrorMessage = "Pet not found.";
+                return View("Error");
+            }
+
+            var adoptionRequests = await _adoptionRequestService.GetAdoptionRequestsByPetIdAsync(id);
+            var adoption = await _adoptionService.GetAdoptionByPetIdAsync(id);
+            if (adoption != null)
+            {
+                ViewBag.ErrorMessage = "This pet has already been adopted and cannot be deleted.";
+                return View("Error");
+            }
+
+            try
+            {
+                await _petService.DeletePetAsync(id, user.Id);
+
+                foreach (var request in adoptionRequests)
+                {
+                    await SendPetDeletionEmailAsync(request.User, pet);
+                }
+
+                return RedirectToAction("Index", "Adoption");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                ViewBag.ErrorMessage = "You are not authorized to delete this pet.";
+                return View("Error");
+            }
+            catch (KeyNotFoundException)
+            {
+                ViewBag.ErrorMessage = "The pet you're trying to delete does not exist.";
+                return View("Error");
+            }
+        }
+
         private async Task SendPetUpdateEmailAsync(User user, Pet pet)
         {
             var subject = "The pet you requested adoption for has been updated";
             var body = EmailHelper.GeneratePetUpdateEmailBody(user, pet);
+            await _emailService.SendEmailAsync(user.Email, subject, body);
+        }
+
+        private async Task SendPetDeletionEmailAsync(User user, Pet pet)
+        {
+            var subject = "The pet you requested adoption for has been deleted";
+            var body = EmailHelper.GeneratePetDeletionEmailBody(user, pet);
             await _emailService.SendEmailAsync(user.Email, subject, body);
         }
     }
