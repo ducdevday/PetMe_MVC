@@ -1,0 +1,20 @@
+﻿@using PetMe.Data.Entities
+@model LostPetAd
+
+@{
+    ViewData["Title"] = "Delete Pet";
+    Layout = "_Layout";
+}
+
+<div class="pet-page">
+    <div class="pet-container">
+        <h2>Delete Pet</h2>
+        <p>Are you sure you want to delete the pet <strong>@Model.PetName</strong>?</p>
+
+        <form asp-action="Delete" method="post">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <button type="submit" class="btn-pet">Delete</button>
+            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary ml-2">Cancel</a>
+        </form>
+    </div>
+</div>
