@@ -133,14 +133,10 @@
 @section Scripts
 {
     <script>
-        console.log("Script is loaded");
         $('#city').change(function () {
-            console.log("City dropdown changed"); // Kiểm tra sự kiện đã được kích hoạt
-            var provinceId = $(this).val();
-            console.log("Selected provinceId:", provinceId);
+            var provinceId = $(this).val();;
             if (provinceId) {
                 $.get('/Account/GetDistricts?provinceId=' + provinceId, function (data) {
-                    console.log("Districts fetched:", data);
                     var districtSelect = $('#district');
                     districtSelect.empty();
                     districtSelect.append('<option value="">Select a district</option>');

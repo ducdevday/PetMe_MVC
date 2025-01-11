@@ -22,4 +22,8 @@
     <ProjectReference Include="..\PetMe.Setting\PetMe.Setting.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
+  </ItemGroup>
+
 </Project>

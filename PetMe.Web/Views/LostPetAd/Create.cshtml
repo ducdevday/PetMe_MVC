@@ -1,0 +1,92 @@
+﻿@using PetMe.Data.Entities
+@{
+    ViewData["Title"] = "Create Lost Pet Ad";
+}
+
+<div class="lostpet-page">
+    <h2 class="lostpet-title">@ViewData["Title"]</h2>
+
+    <div class="lostpet-container">
+        <form asp-action="Create" method="post">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["ErrorMessage"]
+                </div>
+            }
+
+            <div class="form-group">
+                <label for="PetName">Pet Name</label>
+                <input type="text" class="form-control" id="PetName" name="PetName" required />
+            </div>
+
+            <div class="form-group">
+                <label for="Description">Description</label>
+                <textarea class="form-control" id="Description" name="Description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="LastSeenDate">Last Seen Date</label>
+                <input type="date" class="form-control" id="LastSeenDate" name="LastSeenDate" required />
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <select id="city"
+                        name="city"
+                        class="form-control"
+                        required>
+                    <option value="">Select a city</option>
+                    @foreach (var city in ViewData["Cities"] as List<Province>)
+                    {
+                        <option value="@city.ProvinceId" data-name="@city.ProvinceName">@city.ProvinceName</option>
+                    }
+                </select>
+            </div>
+
+            <!-- District -->
+            <div class="form-group">
+                <label for="district">District</label>
+                <select id="district"
+                        name="district"
+                        class="form-control"
+                        required>
+                    <option value="">Select a district</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="ImageUrl">Image URL (Required)</label>
+                <input type="url" class="form-control" id="ImageUrl" name="ImageUrl" placeholder="Enter Image URL" required />
+            </div>
+
+            <button type="submit" class="btn-lostpet">Create Lost Pet Ad</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $('#city').change(function () {
+            var provinceId = $(this).val();;
+            if (provinceId) {
+                $.get('/Account/GetDistricts?provinceId=' + provinceId, function (data) {
+                    var districtSelect = $('#district');
+                    districtSelect.empty();
+                    districtSelect.append('<option value="">Select a district</option>');
+                    data.forEach(function (district) {
+                        districtSelect.append('<option value="' + district.district_id + '" name="' + district.district_name + '">' + district.district_name + '</option>');
+                    });
+                });
+            }
+        });
+    </script>
+}

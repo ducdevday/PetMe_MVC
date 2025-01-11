@@ -8,18 +8,18 @@ namespace PetMe.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IUserService _userService;
-        private readonly IVnAddressService _vpnAddressService;
+        private readonly IVnAddressService _vnAddressService;
 
         public AccountController(IUserService userService, IVnAddressService vpnAddressService)
         {
             _userService = userService;
-            _vpnAddressService = vpnAddressService;
+            _vnAddressService = vpnAddressService;
         }
 
         public async Task<IActionResult> Register()
         {
            
-            ViewData["Cities"] = await _vpnAddressService.GetProvincesAsync();
+            ViewData["Cities"] = await _vnAddressService.GetProvincesAsync();
             ViewData["Districts"] = new List<District>();  // Initial empty list for districts
             return View();
         }
@@ -32,6 +32,8 @@ namespace PetMe.Web.Controllers
             {
                 return View();
             }
+            var formattedCity = (await _vnAddressService.GetProvincesAsync()).FirstOrDefault(x => x.ProvinceId == city)?.ProvinceName ?? "";
+            var formattedDistrict = (await _vnAddressService.GetDisTrictsAsync(int.Parse(city))).FirstOrDefault(x => x.DistrictId == district)?.DistrictName ?? "";
 
             var user = new User
             {
@@ -42,8 +44,8 @@ namespace PetMe.Web.Controllers
                 Address = address,
                 DateOfBirth = dateOfBirth.ToUniversalTime(),
                 ProfileImageUrl = profileImageUrl,
-                City = city,
-                District = district
+                City = formattedCity,
+                District = formattedDistrict
             };
 
             await _userService.RegisterAsync(user);
@@ -54,7 +56,7 @@ namespace PetMe.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetDistricts([FromQuery] int provinceId)
         {
-            var districts = await _vpnAddressService.GetDisTrictsAsync(provinceId);
+            var districts = await _vnAddressService.GetDisTrictsAsync(provinceId);
             return Json(districts); 
         }
 
