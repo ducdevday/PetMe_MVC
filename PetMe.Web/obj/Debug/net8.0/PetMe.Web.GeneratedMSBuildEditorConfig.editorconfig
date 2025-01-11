@@ -34,6 +34,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/WorkSpace/Home/Dotnet/PetMe_MVC/PetMe.Web/Views/Adoption/Adopt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRvcHRpb25cQWRvcHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/WorkSpace/Home/Dotnet/PetMe_MVC/PetMe.Web/Views/Adoption/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRvcHRpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

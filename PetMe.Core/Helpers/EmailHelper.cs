@@ -56,7 +56,7 @@ namespace PetMe.Data.Helpers
 
                 <div class='footer'>
                     <p>Best regards,</p>
-                    <p>The PetSoLive Team</p>
+                    <p>PetMe</p>
                 </div>
             </div>
         </body>
@@ -79,7 +79,7 @@ namespace PetMe.Data.Helpers
 
                 <div class='footer'>
                     <p>Best regards,</p>
-                    <p>The PetSoLive Team</p>
+                    <p>PetMe</p>
                 </div>
             </div>
         </body>
@@ -101,7 +101,7 @@ namespace PetMe.Data.Helpers
 
                 <div class='footer'>
                     <p>Best regards,</p>
-                    <p>The PetSoLive Team</p>
+                    <p>PetMe</p>
                 </div>
             </div>
         </body>
@@ -124,7 +124,7 @@ namespace PetMe.Data.Helpers
 
                 <div class='footer'>
                     <p>Best regards,</p>
-                    <p>The PetSoLive Team</p>
+                    <p>PetMe</p>
                 </div>
             </div>
         </body>
@@ -147,7 +147,7 @@ namespace PetMe.Data.Helpers
 
                 <div class='footer'>
                     <p>Best regards,</p>
-                    <p>The PetSoLive Team</p>
+                    <p>PetMe</p>
                 </div>
             </div>
         </body>
@@ -176,7 +176,7 @@ namespace PetMe.Data.Helpers
 
                 <div class='footer'>
                     <p>Best regards,</p>
-                    <p>The PetSoLive Team</p>
+                    <p>PetMe</p>
                 </div>
             </div>
         </body>
@@ -199,7 +199,7 @@ namespace PetMe.Data.Helpers
 
                 <div class='footer'>
                     <p>Best regards,</p>
-                    <p>The PetSoLive Team</p>
+                    <p>PetMe</p>
                 </div>
             </div>
         </body>
@@ -231,7 +231,7 @@ namespace PetMe.Data.Helpers
 
                 <div class='footer'>
                     <p>Best regards,</p>
-                    <p>The PetSoLive Team</p>
+                    <p>PetMe</p>
                 </div>
             </div>
         </body>
@@ -262,7 +262,7 @@ namespace PetMe.Data.Helpers
 
                 <div class='footer'>
                     <p>Best regards,</p>
-                    <p>The PetSoLive Team</p>
+                    <p>PetMe</p>
                 </div>
             </div>
         </body>
@@ -293,7 +293,7 @@ namespace PetMe.Data.Helpers
 
                 <div class='footer'>
                     <p>Best regards,</p>
-                    <p>The PetSoLive Team</p>
+                    <p>PetMe</p>
                 </div>
             </div>
         </body>
@@ -323,7 +323,7 @@ namespace PetMe.Data.Helpers
 
                 <div class='footer'>
                     <p>Best regards,</p>
-                    <p>The PetSoLive Team</p>
+                    <p>PetMe</p>
                 </div>
             </div>
         </body>

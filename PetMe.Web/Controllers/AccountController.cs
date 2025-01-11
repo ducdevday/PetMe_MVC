@@ -79,13 +79,11 @@ namespace PetMe.Web.Controllers
                     HttpContext.Session.SetInt32("UserId", user.Id);
                     return RedirectToAction("Index", "Home");
                 }
-
                 ModelState.AddModelError("", "Invalid username or password");
             }
             catch (Exception ex) {
                 ModelState.AddModelError("", ex.Message);
             }
-
             return View();
         }
 
@@ -94,8 +92,5 @@ namespace PetMe.Web.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
         }
-
     }
-
-
 }

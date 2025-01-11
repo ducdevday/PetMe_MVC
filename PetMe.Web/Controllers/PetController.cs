@@ -90,7 +90,7 @@ namespace PetMe.Web.Controllers
                 ViewBag.ErrorMessage = "Pet Not Found";
             }
 
-            var adoptionRequests = await _adoptionService.GetAdoptionByPetIdAsync(id);
+            var adoptionRequests = await _adoptionRequestService.GetAdoptionRequestsByPetIdAsync(id);
             var adoption = await _adoptionService.GetAdoptionByPetIdAsync(id);
 
             var user = await GetLoggedInUserAsync();
@@ -246,10 +246,6 @@ namespace PetMe.Web.Controllers
             }
         }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> bff0f066ccf0a90dbdb0c11703c71d5d43668258
         private async Task SendPetUpdateEmailAsync(User user, Pet pet)
         {
             var subject = "The pet you requested adoption for has been updated";

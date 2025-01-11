@@ -24,26 +24,20 @@ namespace PetMe.Business.Services
 
         public async Task SendEmailAsync(string toEmail, string subject, string body)
         {
-            if (string.IsNullOrEmpty(toEmail)) throw new ArgumentNullException(nameof(toEmail));
-            if (string.IsNullOrEmpty(subject)) throw new ArgumentNullException(nameof(subject));
-            if (string.IsNullOrEmpty(body)) throw new ArgumentNullException(nameof(body));
+            MailMessage message = new MailMessage();
+            SmtpClient smtp = new SmtpClient(_smtpSettings.Host);
 
-            var client = new SmtpClient(_smtpSettings.Host, _smtpSettings.Port)
-            {
-                Credentials = new NetworkCredential(_smtpSettings.Host, _smtpSettings.Password),
-                EnableSsl = true
-            };
+            message.From = new MailAddress(_smtpSettings.FromEmail);
+            message.To.Add(new MailAddress(toEmail));
+            message.Subject = subject;
+            message.Body = body;
+            message.IsBodyHtml = true;
 
-            var mailMessage = new MailMessage
-            {
-                From = new MailAddress(_smtpSettings.FromEmail),
-                Subject = subject,
-                Body = body,
-                IsBodyHtml = true
-            };
-            mailMessage.To.Add(toEmail);
+            smtp.Port = _smtpSettings.Port;
+            smtp.Credentials = new NetworkCredential(_smtpSettings.FromEmail, _smtpSettings.Password);
+            smtp.EnableSsl = true;
 
-            await client.SendMailAsync(mailMessage);
+            await smtp.SendMailAsync(message);
         }
     }
 }
