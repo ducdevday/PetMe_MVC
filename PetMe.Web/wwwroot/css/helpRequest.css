@@ -1,0 +1,383 @@
+﻿.helprequest-page {
+    min-height: calc(100vh - 80px);
+    margin: 20px 0;
+    background: linear-gradient(to right, var(--petsolive-light), var(--petsolive-light));
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    .helprequest-page .helprequest-title {
+        text-align: center;
+        margin: 2rem 0;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: var(--petsolive-dark);
+    }
+
+    .helprequest-page .helprequest-container {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        border-radius: 12px;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        width: 90%;
+        max-width: 700px;
+        margin-bottom: 2rem;
+    }
+
+        .helprequest-page .helprequest-container .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+            .helprequest-page .helprequest-container .form-group label {
+                font-weight: 500;
+                color: var(--petsolive-dark);
+                margin-bottom: 0.5rem;
+                display: block;
+            }
+
+        .helprequest-page .helprequest-container .form-control {
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: border 0.3s, box-shadow 0.3s;
+            outline: none;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+            .helprequest-page .helprequest-container .form-control:focus {
+                border-color: var(--petsolive-primary);
+                box-shadow: 0 0 0 0.1rem rgba(30, 136, 229, 0.25);
+            }
+
+    .helprequest-page .btn-helprequest {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.6rem 1.2rem;
+        border: none;
+        border-radius: 6px;
+        background-color: var(--petsolive-primary);
+        color: #fff;
+        font-size: 1rem;
+        transition: background-color 0.3s, transform 0.2s;
+        cursor: pointer;
+    }
+
+        .helprequest-page .btn-helprequest:hover {
+            background-color: #1565C0;
+            transform: translateY(-1px);
+        }
+
+        .helprequest-page .btn-helprequest:focus {
+            outline: none;
+            box-shadow: 0 0 0 0.1rem #ffffff, 0 0 0 0.25rem var(--petsolive-primary);
+        }
+
+    .helprequest-page .alert {
+        margin: 1rem auto;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        max-width: 700px;
+        padding: 1rem;
+    }
+
+    .helprequest-page .alert-success {
+        background-color: rgba(67, 160, 71, 0.1);
+        color: var(--petsolive-success);
+        border-left: 4px solid var(--petsolive-success);
+    }
+
+    .helprequest-page .alert-danger {
+        background-color: rgba(229, 57, 53, 0.1);
+        color: var(--petsolive-danger);
+        border-left: 4px solid var(--petsolive-danger);
+    }
+
+    .helprequest-page .alert-warning {
+        background-color: rgba(251, 140, 0, 0.1);
+        color: var(--petsolive-warning);
+        border-left: 4px solid var(--petsolive-warning);
+    }
+
+    .helprequest-page .alert-info {
+        background-color: rgba(142, 35, 170, 0.1);
+        color: var(--petsolive-info);
+        border-left: 4px solid var(--petsolive-info);
+    }
+
+    .helprequest-page .helprequest-details .card,
+    .helprequest-page .helprequest-container .helprequest-create .card {
+        max-width: 700px;
+        margin: 2rem auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+        .helprequest-page .helprequest-details .card:hover,
+        .helprequest-page .helprequest-container .helprequest-create .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .helprequest-page .helprequest-details .card img,
+        .helprequest-page .helprequest-container .helprequest-create .card img {
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+    .helprequest-page .helprequest-details .card-header,
+    .helprequest-page .helprequest-container .helprequest-create .card-header {
+        background-color: var(--petsolive-info);
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 600;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .helprequest-page .helprequest-details .card-body,
+    .helprequest-page .helprequest-container .helprequest-create .card-body {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .helprequest-page .helprequest-details .card-title,
+    .helprequest-page .helprequest-container .helprequest-create .card-title {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        color: var(--petsolive-dark);
+    }
+
+    .helprequest-page .helprequest-details .card-body .btn-group,
+    .helprequest-page .helprequest-container .helprequest-create .card-body .btn-group {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .helprequest-page .helprequest-details .card-body .btn-secondary,
+    .helprequest-page .helprequest-container .helprequest-create .card-body .btn-secondary {
+        margin-top: 1rem;
+    }
+
+    .helprequest-page .comment-section {
+        margin-top: 2rem;
+    }
+
+        .helprequest-page .comment-section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--petsolive-dark);
+        }
+
+    .helprequest-page .comment-list {
+        list-style: none;
+        padding: 0;
+        max-width: 900px;
+        width: 400px;
+        margin: 0 auto 2rem;
+    }
+
+        .helprequest-page .comment-list .list-group-item {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background-color: #fafafa;
+        }
+
+            .helprequest-page .comment-list .list-group-item .comment-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0.5rem;
+            }
+
+                .helprequest-page .comment-list .list-group-item .comment-header .username {
+                    font-weight: 600;
+                    color: var(--petsolive-dark);
+                }
+
+                .helprequest-page .comment-list .list-group-item .comment-header .timestamp {
+                    font-size: 0.9rem;
+                    color: #777;
+                }
+
+            .helprequest-page .comment-list .list-group-item .comment-content {
+                font-size: 1rem;
+                color: #555;
+            }
+
+            .helprequest-page .comment-list .list-group-item .btn-group {
+                margin-top: 0.5rem;
+            }
+
+                .helprequest-page .comment-list .list-group-item .btn-group .btn {
+                    padding: 0.3rem 0.6rem;
+                    font-size: 0.9rem;
+                }
+
+    .helprequest-page .add-comment-form {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+        .helprequest-page .add-comment-form h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--petsolive-dark);
+        }
+
+        .helprequest-page .add-comment-form .form-group textarea {
+            resize: vertical;
+        }
+
+    .helprequest-page .helprequest-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: box-shadow 0.3s, transform 0.3s;
+        background-color: #fff;
+        margin-bottom: 1rem;
+    }
+
+        .helprequest-page .helprequest-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .helprequest-page .helprequest-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .helprequest-page .helprequest-card .card-body {
+            padding: 1rem;
+        }
+
+        .helprequest-page .helprequest-card .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--petsolive-dark);
+        }
+
+        .helprequest-page .helprequest-card .card-text {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .helprequest-page .helprequest-card .btn-primary {
+            margin-top: 0.5rem;
+            background-color: var(--petsolive-primary);
+            border-color: var(--petsolive-primary);
+            color: #fff;
+        }
+
+            .helprequest-page .helprequest-card .btn-primary:hover {
+                background-color: #1565C0;
+                border-color: #0D47A1;
+            }
+
+.status-label {
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.status-active {
+    background-color: var(--petsolive-success);
+}
+
+.status-passive {
+    background-color: var(--petsolive-danger);
+}
+
+.helprequest-page .helprequest-details .card-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+    .helprequest-page .helprequest-container {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .helprequest-page .helprequest-title {
+        font-size: 1.5rem;
+    }
+
+    .helprequest-page .helprequest-card img {
+        height: 180px;
+    }
+
+    .helprequest-page .helprequest-details .card img {
+        height: 250px;
+    }
+
+    .helprequest-page .comment-list .list-group-item {
+        padding: 0.8rem;
+    }
+
+        .helprequest-page .comment-list .list-group-item .comment-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+            .helprequest-page .comment-list .list-group-item .comment-header .timestamp {
+                margin-top: 0.3rem;
+            }
+}
+
+.helprequest-page .helprequest-details .card-body p,
+.helprequest-page .helprequest-details .card-body h5 {
+    text-align: left;
+}
+
+.helprequest-page .helprequest-details .card-body .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.helprequest-page .helprequest-details .card-body .btn-secondary {
+    display: inline-block;
+}
+
+
+.helprequest-page .helprequest-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.helprequest-page .helprequest-container .form-group {
+    width: 100%;
+}
+
+    .helprequest-page .helprequest-container .form-group label {
+        margin-bottom: 0.5rem;
+    }
+
+.helprequest-page .helprequest-container .form-control {
+    width: 100%;
+}
+
+.helprequest-page .helprequest-container .btn-helprequest {
+    width: 100%;
+    max-width: 300px;
+    align-self: center;
+}
