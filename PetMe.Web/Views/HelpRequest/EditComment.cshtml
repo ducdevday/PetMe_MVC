@@ -1,0 +1,38 @@
+﻿@model PetMe.Data.Entities.Comment
+
+@{
+    ViewData["Title"] = "Edit Comment";
+    Layout = "_Layout";
+}
+
+<div class="helprequest-page">
+    <div class="helprequest-container helprequest-form">
+        <h2>Edit Comment</h2>
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <h4>Errors:</h4>
+                <ul>
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <form asp-action="EditComment" method="post">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <input type="hidden" name="helpRequestId" value="@Model.HelpRequestId" />
+
+            <div class="form-group">
+                <label for="content">Comment</label>
+                <textarea id="content" name="content" class="form-control" rows="3">@Model.Content</textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn-helprequest">Update</button>
+        </form>
+    </div>
+</div>
