@@ -11,7 +11,7 @@ namespace PetMe.Data.Helpers
     {
         private const string CssLink = "<link rel='stylesheet' type='text/css' href='https://yourdomain.com/path/to/email.css'>";
 
-        public string GenerateAdoptionRequestEmailBody(User user, Pet pet, AdoptionRequest adoptionRequest)
+        public static string GenerateAdoptionRequestEmailBody(User user, Pet pet, AdoptionRequest adoptionRequest)
         {
             return $@"
         <html>
@@ -63,7 +63,7 @@ namespace PetMe.Data.Helpers
         </html>";
         }
 
-        public string GenerateAdoptionRequestConfirmationEmailBody(User user, Pet pet)
+        public static string GenerateAdoptionRequestConfirmationEmailBody(User user, Pet pet)
         {
             return $@"
         <html>
@@ -86,7 +86,7 @@ namespace PetMe.Data.Helpers
         </html>";
         }
 
-        public string GenerateRejectionEmailBody(User user, Pet pet)
+        public static string GenerateRejectionEmailBody(User user, Pet pet)
         {
             return $@"
         <html>
@@ -359,7 +359,7 @@ namespace PetMe.Data.Helpers
         }
 
         // Kayıp ilanı güncellenince gönderilecek e-posta içeriği
-        public string GenerateUpdatedLostPetAdEmailBody(LostPetAd lostPetAd, User user)
+        public static string GenerateUpdatedLostPetAdEmailBody(LostPetAd lostPetAd, User user)
         {
             return $@"
             The lost pet ad has been updated.

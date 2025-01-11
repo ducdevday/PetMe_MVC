@@ -119,6 +119,66 @@ namespace PetMe.Web.Controllers
             return RedirectToAction("Details", "Pet", new { id = petId });
         }
 
+        public async Task<IActionResult> ApproveRequest(int adoptionRequestId, int petId)
+        {
+            var adoptionRequest = await _adoptionRequestService.GetAdoptionRequestByIdAsync(adoptionRequestId);
+            if (adoptionRequest == null || adoptionRequest.PetId != petId)
+            {
+                return NotFound();
+            }
+
+            var pet = await _petService.GetPetByIdAsync(petId);
+            var petOwner = pet.PetOwners.FirstOrDefault();
+
+            if (petOwner?.UserId.ToString() != User?.Identity?.Name)
+            {
+                return Unauthorized();
+            }
+
+            adoptionRequest.Status = AdoptionStatus.Approved;
+            await _adoptionRequestService.UpdateAdoptionRequestAsync(adoptionRequest);
+
+            var approvedUser = adoptionRequest.User;
+            if (approvedUser != null)
+            {
+                await SendApprovalEmailAsync(approvedUser, pet);
+            }
+
+            var pendingRequests = await _adoptionRequestService.GetPendingRequestsByPetIdAsync(petId);
+            if (pendingRequests != null)
+            {
+                foreach (var request in pendingRequests)
+                {
+                    if (request.Id != adoptionRequestId)
+                    {
+                        request.Status = AdoptionStatus.Rejected;
+                        await _adoptionRequestService.UpdateAdoptionRequestAsync(request);
+
+                        var rejectedUser = request.User;
+                        if (rejectedUser != null)
+                        {
+                            await SendRejectionEmailAsync(rejectedUser, pet);
+                        }
+                    }
+                }
+            }
+
+            var adoption = new Adoption
+            {
+                PetId = petId,
+                UserId = adoptionRequest.UserId,
+                AdoptionDate = DateTime.UtcNow,
+                Status = AdoptionStatus.Approved,
+                Pet = pet,
+                User = adoptionRequest.User
+            };
+
+            await _adoptionService.CreateAdoptionAsync(adoption);
+
+            return RedirectToAction("Index");
+        }
+
+
         public async Task SendAdoptionRequestNotificationAsync(AdoptionRequest adoptionRequest)
         {
             var petOwner = await _petOwnerService.GetPetOwnerByPetIdAsync(adoptionRequest.PetId);
@@ -133,8 +193,7 @@ namespace PetMe.Web.Controllers
             var pet = adoptionRequest.Pet;
 
             var subject = "New Adoption Request for Your Pet";
-            var emailHelper = new EmailHelper();
-            var body = emailHelper.GenerateAdoptionRequestEmailBody(user, pet, adoptionRequest);
+            var body = EmailHelper.GenerateAdoptionRequestEmailBody(user, pet, adoptionRequest);
 
             await _emailService.SendEmailAsync(petOwnerUser.Email, subject, body);
         }
@@ -142,9 +201,22 @@ namespace PetMe.Web.Controllers
         public async Task SendAdoptionConfirmationEmailAsync(User user, Pet pet)
         {
             var subject = "Adoption Request Submitted Successfully";
-            var emailHelper = new EmailHelper();
-            var body = emailHelper.GenerateAdoptionRequestConfirmationEmailBody(user, pet);
+            var body = EmailHelper.GenerateAdoptionRequestConfirmationEmailBody(user, pet);
 
+            await _emailService.SendEmailAsync(user.Email, subject, body);
+        }
+
+        private async Task SendApprovalEmailAsync(User user, Pet pet)
+        {
+            var subject = "Your Adoption Request Has Been Approved";
+            var body = EmailHelper.GenerateAdoptionConfirmationEmailBody(user, pet);
+            await _emailService.SendEmailAsync(user.Email, subject, body);
+        }
+
+        private async Task SendRejectionEmailAsync(User user, Pet pet)
+        {
+            var subject = "Adoption Request Rejected";
+            var body = EmailHelper.GenerateRejectionEmailBody(user, pet);
             await _emailService.SendEmailAsync(user.Email, subject, body);
         }
 

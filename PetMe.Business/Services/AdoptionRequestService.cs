@@ -7,6 +7,7 @@ namespace PetMe.Business.Services
     public interface IAdoptionRequestService {
         Task<AdoptionRequest> GetAdoptionRequestByIdAsync(int requestId);
         Task<List<AdoptionRequest>> GetAdoptionRequestsByPetIdAsync(int petId);
+        Task<List<AdoptionRequest>> GetPendingRequestsByPetIdAsync(int petId);
         Task UpdateAdoptionRequestAsync(AdoptionRequest request);
     }
     public class AdoptionRequestService : IAdoptionRequestService
@@ -34,6 +35,15 @@ namespace PetMe.Business.Services
                 throw new KeyNotFoundException();
             }
             return adoptionRequestList;
+        }
+
+        public async Task<List<AdoptionRequest>> GetPendingRequestsByPetIdAsync(int petId)
+        {
+            var pendingRequestList = await _adoptionRequestRepository.GetAdoptionRequestsByPetIdAsync(petId);
+            if (pendingRequestList == null) {
+                throw new KeyNotFoundException();            
+            }
+            return pendingRequestList;
         }
 
         public async Task UpdateAdoptionRequestAsync(AdoptionRequest request)
