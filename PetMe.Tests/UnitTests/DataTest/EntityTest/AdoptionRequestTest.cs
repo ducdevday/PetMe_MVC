@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PetMe.Tests.UnitTests.DataTest.EntityTest
 {
-    public class AdoptionRequestTests
+    public class AdoptionRequestTest
     {
         [Fact]
         public void AdoptionRequest_ShouldHaveValidProperties_WhenInitialized()

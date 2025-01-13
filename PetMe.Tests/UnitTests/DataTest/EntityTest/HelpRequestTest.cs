@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PetMe.Tests.UnitTests.DataTest.EntityTest
 {
-    public class HelpRequestTests
+    public class HelpRequestTest
     {
         [Fact]
         public void HelpRequest_ShouldHaveValidProperties_WhenInitialized()

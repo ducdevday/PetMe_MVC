@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PetMe.Tests.UnitTests.DataTest.EntityTest
 {
-    public class CommentTests
+    public class CommentTest
     {
         [Fact]
         public void Comment_ShouldHaveValidProperties_WhenAllAreSet()

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PetMe.Tests.UnitTests.DataTest.EntityTest
 {
-    public class AdoptionTests
+    public class AdoptionTest
     {
         [Fact]
         public void Adoption_ShouldHaveCorrectRelationships_WhenInitialized()

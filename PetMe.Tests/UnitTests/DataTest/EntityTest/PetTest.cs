@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PetMe.Tests.UnitTests.DataTest.EntityTest
 {
-    public class PetTests
+    public class PetTest
     {
         [Fact]
         public void Pet_ShouldHaveDefaultValues_WhenInitialized()

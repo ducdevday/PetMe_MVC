@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PetMe.Tests.UnitTests.DataTest.EntityTest
 {
-    public class UserTests
+    public class UserTest
     {
         [Fact]
         public void User_ShoudHaveValidProperties_WhenInitialized() {
