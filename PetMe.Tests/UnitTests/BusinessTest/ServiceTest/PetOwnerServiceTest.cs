@@ -37,7 +37,6 @@ namespace PetMe.Tests.UnitTests.BusinessTest.ServiceTest
                 User = new User { Id = 1, Username = "jane_doe" }
             };
 
-            // Setting up the mock repository to return the expected pet owner
             _mockPetOwnerRepository
                 .Setup(r => r.GetPetOwnerByPetIdAsync(petId))
                 .ReturnsAsync(expectedPetOwner);
@@ -59,7 +58,6 @@ namespace PetMe.Tests.UnitTests.BusinessTest.ServiceTest
             // Arrange
             var petId = 1;
 
-            // Setting up the mock repository to return null for the pet owner
             _mockPetOwnerRepository
                 .Setup(r => r.GetPetOwnerByPetIdAsync(petId))
                 .ReturnsAsync((PetOwner?)null);
