@@ -259,7 +259,5 @@ namespace PetMe.Web.Controllers
             var body = EmailHelper.GeneratePetDeletionEmailBody(user, pet);
             await _emailService.SendEmailAsync(user.Email, subject, body);
         }
-
-
     }
 }
