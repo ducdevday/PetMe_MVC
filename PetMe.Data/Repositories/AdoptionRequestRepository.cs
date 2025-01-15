@@ -16,6 +16,10 @@ namespace PetMe.DataAccess.Repositories
         Task<List<AdoptionRequest>> GetPendingRequestsByPetIdAsync(int petId);
         Task<AdoptionRequest?> GetByIdAsync(int adoptionRequestId);
         Task UpdateAsync(AdoptionRequest adoptionRequest);
+        Task<AdoptionRequest?> GetAdoptionRequestByUserAndPetAsync(int userId, int petId);
+        Task AddAsync(AdoptionRequest adoptionRequest);
+
+
     }
     public class AdoptionRequestRepository : IAdoptionRequestRepository
     {
@@ -53,6 +57,18 @@ namespace PetMe.DataAccess.Repositories
         public async Task UpdateAsync(AdoptionRequest adoptionRequest)
         {
             _context.AdoptionRequests.Update(adoptionRequest);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<AdoptionRequest?> GetAdoptionRequestByUserAndPetAsync(int userId, int petId)
+        {
+            return await _context.AdoptionRequests
+                .FirstOrDefaultAsync(ar => ar.UserId == userId && ar.PetId == petId);
+        }
+
+        public async Task AddAsync(AdoptionRequest adoptionRequest)
+        {
+            await _context.AdoptionRequests.AddAsync(adoptionRequest);
             await _context.SaveChangesAsync();
         }
     }

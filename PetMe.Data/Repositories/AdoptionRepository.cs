@@ -7,10 +7,8 @@ namespace PetMe.DataAccess.Repositories
 {
     public interface IAdoptionRepository {
         Task AddAsync(Adoption adoption);
-        Task AddAsync(AdoptionRequest adoptionRequest);
         Task<Adoption?> GetAdoptionByPetIdAsync(int petId);
         Task<bool> IsPetAlreadyAdoptedAsync(int petId);
-        Task<AdoptionRequest?> GetAdoptionRequestByUserAndPetAsync(int userId, int petId);
     }
     public class AdoptionRepository : IAdoptionRepository
     {
@@ -24,12 +22,6 @@ namespace PetMe.DataAccess.Repositories
         public async Task AddAsync(Adoption adoption)
         {
             await _context.Adoptions.AddAsync(adoption);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task AddAsync(AdoptionRequest adoptionRequest)
-        {
-            await _context.AdoptionRequests.AddAsync(adoptionRequest);
             await _context.SaveChangesAsync();
         }
 
@@ -49,12 +41,6 @@ namespace PetMe.DataAccess.Repositories
         {
             return await _context.AdoptionRequests
                 .AnyAsync(ar => ar.UserId == userId && ar.PetId == petId);
-        }
-
-        public async Task<AdoptionRequest?> GetAdoptionRequestByUserAndPetAsync(int userId, int petId)
-        {
-            return await _context.AdoptionRequests
-                .FirstOrDefaultAsync(ar => ar.UserId == userId && ar.PetId == petId);
         }
     }
 }

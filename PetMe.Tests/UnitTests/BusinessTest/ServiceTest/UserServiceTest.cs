@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PetMe.Tests.UnitTests.BusinessTest
+namespace PetMe.Tests.UnitTests.BusinessTest.ServiceTest
 {
     public class UserServiceTest
     {

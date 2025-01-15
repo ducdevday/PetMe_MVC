@@ -267,5 +267,33 @@ namespace PetMe.Tests.UnitTests.DataAccessTest.RepositoriyTest
             var updatedRequest = await _context.AdoptionRequests.FindAsync(1);
             Assert.Equal(AdoptionStatus.Approved, updatedRequest.Status); // Ensure the status was updated to "Approved"
         }
+
+        [Fact]
+        public async Task GetAdoptionRequestByUserAndPetAsync_ValidUserAndPetIds_ReturnsAdoptionRequest()
+        {
+            // Arrange
+            int userId = 200;
+            int petId = 100;
+            var adoptionRequest = new AdoptionRequest
+            {
+                Id = 1,  // Ensure unique ID for each test
+                PetId = petId,
+                UserId = userId,
+                Message = "I want to adopt this pet.",
+                Status = AdoptionStatus.Pending,
+                RequestDate = DateTime.UtcNow
+            };
+
+            await _context.AdoptionRequests.AddAsync(adoptionRequest);
+            await _context.SaveChangesAsync();
+
+            // Act
+            var result = await _adoptionRequestRepository.GetAdoptionRequestByUserAndPetAsync(userId, petId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(userId, result.UserId);
+            Assert.Equal(petId, result.PetId);
+        }
     }
 }

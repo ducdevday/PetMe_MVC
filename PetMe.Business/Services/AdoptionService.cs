@@ -10,8 +10,6 @@ namespace PetMe.Business.Services
 {
     public interface IAdoptionService {
         Task<Adoption?> GetAdoptionByPetIdAsync(int petId);
-        Task CreateAdoptionRequestAsync(AdoptionRequest adoptionRequest);
-        Task<AdoptionRequest?> GetAdoptionRequestByUserAndPetAsync(int userId, int petId);
         Task CreateAdoptionAsync(Adoption adoption);
     }
 
@@ -39,23 +37,6 @@ namespace PetMe.Business.Services
         public async Task<Adoption?> GetAdoptionByPetIdAsync(int petId)
         {
             return await _adoptionRepository.GetAdoptionByPetIdAsync(petId);
-        }
-
-        public async Task CreateAdoptionRequestAsync(AdoptionRequest adoptionRequest)
-        {
-            if (adoptionRequest == null)
-                throw new ArgumentNullException(nameof(adoptionRequest));
-
-            var existingAdoption = await _adoptionRepository.GetAdoptionByPetIdAsync(adoptionRequest.PetId);
-            if (existingAdoption != null)
-                throw new InvalidOperationException("This pet has already been adopted.");
-
-            await _adoptionRepository.AddAsync(adoptionRequest);
-        }
-
-        public async Task<AdoptionRequest?> GetAdoptionRequestByUserAndPetAsync(int userId, int petId)
-        {
-            return await _adoptionRepository.GetAdoptionRequestByUserAndPetAsync(userId, petId);
         }
     }
 }
