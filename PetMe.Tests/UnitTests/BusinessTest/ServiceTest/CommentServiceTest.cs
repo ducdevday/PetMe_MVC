@@ -151,6 +151,5 @@ namespace PetMe.Tests.UnitTests.BusinessTest.ServiceTest
                 Times.Once
             );
         }
-
     }
 }
