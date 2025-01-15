@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PetMe.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08727d7a8240e4688ac2f5b333028398c7c02cad")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad03999fba66d2eb9159015baa55307dfdd4977b")]
 [assembly: System.Reflection.AssemblyProductAttribute("PetMe.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PetMe.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

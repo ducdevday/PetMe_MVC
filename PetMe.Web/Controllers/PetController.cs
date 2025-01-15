@@ -96,7 +96,7 @@ namespace PetMe.Web.Controllers
             var user = await GetLoggedInUserAsync();
             var isUserLoggedIn = user != null;
             var isOwner = user != null && await _petService.IsUserOwnerOfPetAsync(id, user.Id);
-            var hasAdoptionRequest = user != null && await _adoptionService.GetAdoptionRequestByUserAndPetAsync(user.Id, id) != null;
+            var hasAdoptionRequest = user != null && await _adoptionRequestService.GetAdoptionRequestByUserAndPetAsync(user.Id, id) != null;
 
             ViewBag.AdoptionStatus = adoption != null
             ? "This pet has already been adopted."

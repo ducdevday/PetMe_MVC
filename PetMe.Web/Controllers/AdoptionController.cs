@@ -54,7 +54,7 @@ namespace PetMe.Web.Controllers
                 return BadRequest("User not found.");
             }
 
-            var existingRequest = await _adoptionService.GetAdoptionRequestByUserAndPetAsync(user.Id, petId);
+            var existingRequest = await _adoptionRequestService.GetAdoptionRequestByUserAndPetAsync(user.Id, petId);
             if (existingRequest != null)
             {
                 ViewBag.ErrorMessage = "You have already submitted an adoption request for this pet.";
@@ -94,7 +94,7 @@ namespace PetMe.Web.Controllers
                 return BadRequest("User not found.");
             }
 
-            var existingRequest = await _adoptionService.GetAdoptionRequestByUserAndPetAsync(user.Id, petId);
+            var existingRequest = await _adoptionRequestService.GetAdoptionRequestByUserAndPetAsync(user.Id, petId);
             if (existingRequest != null)
             {
                 ViewBag.ErrorMessage = "You have already submitted an adoption request for this pet.";
@@ -112,7 +112,7 @@ namespace PetMe.Web.Controllers
                 UserId = user.Id,
             };
 
-            await _adoptionService.CreateAdoptionRequestAsync(adoptionRequest);
+            await _adoptionRequestService.CreateAdoptionRequestAsync(adoptionRequest);
             await SendAdoptionRequestNotificationAsync(adoptionRequest);
             await SendAdoptionConfirmationEmailAsync(user, pet);
 
