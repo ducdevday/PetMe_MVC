@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PetMe.Tests.UnitTests.BusinessTest
+namespace PetMe.Tests.UnitTests.BusinessTest.ServiceTest
 {
     public class AdoptionRequestServiceTest
     {
@@ -66,7 +66,8 @@ namespace PetMe.Tests.UnitTests.BusinessTest
         }
 
         [Fact]
-        public async Task GetAdoptionRequestByIdAsync_ValidAdoptionRequestId_ReturnAdoptionRequest() {
+        public async Task GetAdoptionRequestByIdAsync_ValidAdoptionRequestId_ReturnAdoptionRequest()
+        {
             var adoptionRequest = new AdoptionRequest
             {
                 Id = 1,
@@ -84,7 +85,8 @@ namespace PetMe.Tests.UnitTests.BusinessTest
         }
 
         [Fact]
-        public async Task GetAdoptionRequestsByPetIdAsync_ValidPetId_ReturnCorrentAdoptionRequest() {
+        public async Task GetAdoptionRequestsByPetIdAsync_ValidPetId_ReturnCorrentAdoptionRequest()
+        {
             var adoptionRequest = new AdoptionRequest
             {
                 Id = 1,
@@ -154,7 +156,8 @@ namespace PetMe.Tests.UnitTests.BusinessTest
         }
 
         [Fact]
-        public async Task GetPendingRequestsByPetIdAsync_ValidPetId_ReturnCorrentRequestList() {
+        public async Task GetPendingRequestsByPetIdAsync_ValidPetId_ReturnCorrentRequestList()
+        {
             var adoptionRequest = new AdoptionRequest
             {
                 Id = 1,
@@ -189,7 +192,8 @@ namespace PetMe.Tests.UnitTests.BusinessTest
         }
 
         [Fact]
-        public async Task GetAdoptionRequestByUserAndPetAsync_ValidUserIdAndPetId_ReturnCorrentAdoptRequest() {
+        public async Task GetAdoptionRequestByUserAndPetAsync_ValidUserIdAndPetId_ReturnCorrentAdoptRequest()
+        {
             var adoptionRequest = new AdoptionRequest
             {
                 Id = 1,
@@ -215,9 +219,9 @@ namespace PetMe.Tests.UnitTests.BusinessTest
                 RequestDate = DateTime.UtcNow,
             };
 
-            _mockRepository.Setup(r => r.GetAdoptionRequestByUserAndPetAsync(1,1)).ReturnsAsync(adoptionRequest);
+            _mockRepository.Setup(r => r.GetAdoptionRequestByUserAndPetAsync(1, 1)).ReturnsAsync(adoptionRequest);
 
-            var result = await _service.GetAdoptionRequestByUserAndPetAsync(1,1);
+            var result = await _service.GetAdoptionRequestByUserAndPetAsync(1, 1);
 
             Assert.NotNull(result);
             Assert.Equal(adoptionRequest.PetId, result.PetId);
